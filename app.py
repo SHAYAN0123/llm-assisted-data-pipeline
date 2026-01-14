@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import pandas as pd
 import os
-from pipeline import SchemaValidator, DataCleaner, StatisticsCalculator
 
 app = Flask(__name__, static_folder='docs', static_url_path='')
 CORS(app)
@@ -23,38 +22,32 @@ def process_csv():
         if df.empty:
             return jsonify({'error': 'Empty CSV'}), 400
         
-        validator = SchemaValidator()
-        cleaner = DataCleaner()
-        stats_calc = StatisticsCalculator()
+        # Remove duplicates
+        cleaned_df = df.drop_duplicates()
         
-        has_tx = all(c in df.columns for c in ['transaction_id', 'amount', 'timestamp', 'country'])
-        
-        if has_tx:
-            try:
-                valid_df, _ = validator.validate_rows(df)
-            except:
-                valid_df = df
-        else:
-            valid_df = df
-        
-        # Generic schema detection
+        # Build response
         schema = {col: {'type': str(df[col].dtype), 'nullable': bool(df[col].isna().any())} for col in df.columns}
-        
-        cleaned_df = cleaner.clean_data(valid_df)
-        statistics = stats_calc.calculate_stats(cleaned_df)
+        stats = {
+            'row_count': len(cleaned_df),
+            'column_count': len(cleaned_df.columns),
+            'missing_values': int(df.isna().sum().sum()),
+            'duplicate_rows': len(df) - len(cleaned_df),
+            'memory_usage': str(df.memory_usage(deep=True).sum() / 1024)[:5] + ' KB'
+        }
         
         return jsonify({
             'validation': {'is_valid': True, 'errors': []},
-            'schema': {col: {'type': str(schema[col].get('type', 'unknown') if isinstance(schema[col], dict) else schema[col]), 'nullable': schema[col].get('nullable', False) if isinstance(schema[col], dict) else False} for col in schema},
-            'statistics': {'row_count': int(len(cleaned_df)), 'column_count': int(len(cleaned_df.columns)), 'missing_values': int(cleaned_df.isna().sum().sum()), 'duplicate_rows': int(len(cleaned_df) - len(cleaned_df.drop_duplicates())), 'memory_usage': str(cleaned_df.memory_usage(deep=True).sum() / 1024)[:5] + ' KB'},
+            'schema': schema,
+            'statistics': stats,
             'cleaned_data': cleaned_df.head(10).astype(str).to_dict('records')
         }), 200
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': f'Error: {str(e)}'}), 500
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'ok', 'message': 'API running', 'version': '1.0.0'}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    port = int(os.environ.get('PORT', 8000))
+    app.run(debug=True, host='0.0.0.0', port=port)
