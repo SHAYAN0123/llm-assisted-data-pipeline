@@ -640,11 +640,10 @@
             resultsBox.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 1rem;"><div class="loading"></div><span>Validating and analyzing your data...</span></div>';
 
             try {
-                // IMPORTANT: Update this URL with your Railway backend
-                // Get it from: https://railway.app → Dashboard → Your Project
+                // Backend deployed on Render
                 const apiBaseUrl = window.location.hostname === 'localhost' 
                     ? 'http://localhost:3000' 
-                    : 'https://REPLACE_WITH_YOUR_RAILWAY_URL.railway.app'; // ← EDIT THIS!
+                    : 'https://llm-assisted-data-pipeline-1.onrender.com';
                     
                 const response = await fetch(apiBaseUrl + '/api/process', {
                     method: 'POST',
@@ -687,11 +686,10 @@ Frank Miller,38,72000,Sales,2021-08-12`;
             resultsBox.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 1rem;"><div class="loading"></div><span>Analyzing sample dataset...</span></div>';
 
             try {
-                // IMPORTANT: Update this URL with your Railway backend
-                // Get it from: https://railway.app → Dashboard → Your Project
+                // Backend deployed on Render
                 const apiBaseUrl = window.location.hostname === 'localhost' 
                     ? 'http://localhost:3000' 
-                    : 'https://REPLACE_WITH_YOUR_RAILWAY_URL.railway.app'; // ← EDIT THIS!
+                    : 'https://llm-assisted-data-pipeline-1.onrender.com';
                     
                 const response = await fetch(apiBaseUrl + '/api/process', {
                     method: 'POST',
