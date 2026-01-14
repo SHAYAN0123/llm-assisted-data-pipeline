@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-assisted-data-pipeline"
+version = "1.0.0"
+description = "Production-grade CSV data pipeline with validation, cleaning, and statistical analysis"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Muhammad Shayan", email = "shayan@example.com"}]
+keywords = ["data-pipeline", "csv", "validation", "pandas", "data-engineering"]
+
+dependencies = [
+    "pandas>=2.0.3",
+    "numpy>=1.24.3",
+    "flask>=3.0.0",
+    "flask-cors>=4.0.0",
+    "werkzeug>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/SHAYAN0123/llm-assisted-data-pipeline"
+Repository = "https://github.com/SHAYAN0123/llm-assisted-data-pipeline.git"
+Issues = "https://github.com/SHAYAN0123/llm-assisted-data-pipeline/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["test_pipeline.py"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --tb=short"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = []

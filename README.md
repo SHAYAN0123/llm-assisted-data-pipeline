@@ -22,10 +22,10 @@ This project provides a complete, modular data processing framework designed to:
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.7+
-- pip (Python package manager)
+- Python 3.10+
+- [uv](https://docs.astral.sh/uv/) (modern Python package manager)
 
-### Installation
+### Installation with uv
 
 1. **Clone the repository**
    ```bash
@@ -33,17 +33,42 @@ This project provides a complete, modular data processing framework designed to:
    cd llm-assisted-data-pipeline
    ```
 
-2. **Install dependencies**
+2. **Install uv** (if not already installed)
    ```bash
-   python3 -m pip install pandas numpy pytest
+   # macOS/Linux
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   
+   # Windows
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
 
-3. **Verify installation by running tests**
+3. **Create and sync environment**
    ```bash
-   python3 -m pytest test_pipeline.py -v
+   uv sync
+   ```
+
+4. **Verify installation by running tests**
+   ```bash
+   uv run pytest -v
    ```
 
    Expected output: **All 34 tests passing** ✓
+
+### Quick Commands
+
+```bash
+# Run the tests
+uv run pytest test_pipeline.py -v
+
+# Start the Flask backend (port 3000)
+PORT=3000 uv run python app.py
+
+# Access the interactive landing page
+# Visit http://localhost:3000
+
+# Install additional dev dependencies
+uv sync --extra dev
+```
 
 ## 💻 Basic Usage
 
