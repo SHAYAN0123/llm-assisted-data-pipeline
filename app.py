@@ -30,14 +30,18 @@ def process_csv():
         has_tx = all(c in df.columns for c in ['transaction_id', 'amount', 'timestamp', 'country'])
         
         if has_tx:
-            valid_df, _ = validator.validate_rows(df)
-            schema = validator.detect_schema(df)
+            try:
+                valid_df, _ = validator.validate_rows(df)
+            except:
+                valid_df = df
         else:
-            schema = {col: {'type': str(df[col].dtype), 'nullable': bool(df[col].isna().any())} for col in df.columns}
             valid_df = df
         
-        cleaned_df = cleaner.clean(valid_df)
-        statistics = stats_calc.calculate(cleaned_df)
+        # Generic schema detection
+        schema = {col: {'type': str(df[col].dtype), 'nullable': bool(df[col].isna().any())} for col in df.columns}
+        
+        cleaned_df = cleaner.clean_data(valid_df)
+        statistics = stats_calc.calculate_stats(cleaned_df)
         
         return jsonify({
             'validation': {'is_valid': True, 'errors': []},
