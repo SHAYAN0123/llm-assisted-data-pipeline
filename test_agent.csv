@@ -1,0 +1,6 @@
+customer_id,amount,category
+1,100.5,A
+2,200.0,B
+2,200.0,B
+4,50.5,A
+5,,C
