@@ -33,52 +33,16 @@
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
-            animation: drift 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, -50px); }
         }
 
         /* Navigation */
         nav {
             position: sticky;
             top: 0;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         nav .container {
@@ -97,13 +61,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            background-size: 200% 200%;
-            animation: gradientShift 4s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
 
         nav ul {
@@ -115,27 +72,11 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.3s;
         }
 
         nav a:hover {
             color: var(--accent);
-        }
-
-        nav a:hover::after {
-            width: 100%;
         }
 
         /* Hero Section */
@@ -144,36 +85,16 @@
             margin: 0 auto;
             padding: 6rem 2rem;
             text-align: center;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%, #f87171 100%);
-            background-size: 300% 300%;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientFlow 8s ease infinite, fadeInUp 1s ease-out;
-        }
-
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         .hero p {
@@ -183,11 +104,6 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .hero .btn {
-            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         /* Container */
@@ -201,12 +117,6 @@
         section {
             padding: 4rem 0;
             border-top: 1px solid var(--border);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         section h2 {
@@ -217,18 +127,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: slideInDown 0.8s ease-out;
-        }
-
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* Demo Section */
@@ -240,49 +138,18 @@
         }
 
         .upload-box {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(167, 139, 250, 0.05) 100%);
+            background: var(--secondary);
             border: 2px dashed var(--border);
             border-radius: 12px;
             padding: 2rem;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            animation: scaleIn 0.8s ease-out;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .upload-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .upload-box:hover::before {
-            left: 100%;
         }
 
         .upload-box:hover {
             border-color: var(--accent);
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+            background: rgba(59, 130, 246, 0.05);
         }
 
         .upload-box input[type="file"] {
@@ -292,12 +159,6 @@
         .upload-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         .upload-box p {
@@ -308,58 +169,31 @@
         .btn {
             display: inline-block;
             padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            background: var(--accent);
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn:active {
-            transform: translateY(-1px);
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
         }
 
         .btn-secondary {
             background: var(--secondary);
             border: 1px solid var(--border);
             color: var(--text);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .btn-secondary:hover {
             background: var(--border);
-            border-color: var(--accent);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
         }
 
         .btn-small {
@@ -369,24 +203,10 @@
 
         /* Results Section */
         .results-box {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.5) 100%);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
+            background: var(--secondary);
             border-radius: 12px;
             padding: 2rem;
             min-height: 400px;
-            animation: slideInUp 0.8s ease-out;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .results-box.empty {
@@ -404,29 +224,10 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(167, 139, 250, 0.05) 100%);
+            background: var(--primary);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes popIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .stat-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
-            transform: translateY(-5px);
         }
 
         .stat-label {
@@ -435,22 +236,12 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
-            transition: color 0.3s;
-        }
-
-        .stat-card:hover .stat-label {
-            color: var(--accent-light);
         }
 
         .stat-value {
             font-size: 1.75rem;
             font-weight: 700;
             color: var(--accent);
-            transition: all 0.3s;
-        }
-
-        .stat-card:hover .stat-value {
-            color: var(--accent-light);
         }
 
         /* Table */
@@ -465,21 +256,16 @@
             padding: 0.75rem;
             text-align: left;
             border-bottom: 1px solid var(--border);
-            transition: all 0.3s;
         }
 
         .results-table th {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+            background: var(--primary);
             font-weight: 600;
             color: var(--accent);
         }
 
         .results-table tr:hover {
-            background: rgba(59, 130, 246, 0.08);
-        }
-
-        .results-table tr:hover td {
-            color: var(--text);
+            background: rgba(59, 130, 246, 0.05);
         }
 
         /* Loading State */
@@ -502,7 +288,6 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             display: none;
-            animation: slideInDown 0.4s ease-out;
         }
 
         .status-message.error {
@@ -528,232 +313,108 @@
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(167, 139, 250, 0.05) 100%);
+            background: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fadeInUp 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
+            transition: all 0.3s;
         }
 
         .feature-card:hover {
             border-color: var(--accent);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
         }
 
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .feature-card:hover .feature-icon {
-            animation: bounce 1s ease-in-out infinite;
         }
 
         .feature-card h3 {
             margin-bottom: 0.5rem;
             color: var(--accent);
-            transition: color 0.3s;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card:hover h3 {
-            color: var(--accent-light);
         }
 
         .feature-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
         }
 
         /* API Documentation */
         .api-docs {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.5) 100%);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
+            background: var(--secondary);
             border-radius: 12px;
             padding: 2rem;
             margin-top: 2rem;
         }
 
         .api-endpoint {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.5) 100%);
+            background: var(--primary);
             border-left: 4px solid var(--accent);
             border-radius: 4px;
             padding: 1.5rem;
             margin-bottom: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: slideInLeft 0.6s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .api-endpoint:hover {
-            border-left-color: var(--accent-light);
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
-            transform: translateX(5px);
         }
 
         .endpoint-method {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            background: var(--accent);
             color: white;
             border-radius: 4px;
             font-weight: 600;
             font-size: 0.875rem;
             margin-right: 0.5rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .api-endpoint:hover .endpoint-method {
-            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
-            transform: scale(1.05);
         }
 
         .endpoint-path {
             font-family: 'Courier New', monospace;
             color: var(--accent-light);
             margin: 0.5rem 0;
-            transition: color 0.3s;
-        }
-
-        .api-endpoint:hover .endpoint-path {
-            color: #fbbf24;
         }
 
         /* Validation Results */
         .validation-results {
             margin-top: 1rem;
-            animation: fadeIn 0.6s ease-out;
         }
 
         .validation-item {
             display: flex;
-            align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 0;
-            transition: all 0.3s;
-        }
-
-        .validation-item:hover {
-            padding-left: 0.5rem;
+            padding: 0.5rem 0;
+            align-items: center;
         }
 
         .validation-icon {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 0.875rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+            font-size: 1.25rem;
         }
 
         .validation-icon.valid {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
+            color: var(--success);
         }
 
         .validation-icon.invalid {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
+            color: var(--danger);
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            background: var(--secondary);
             border-top: 1px solid var(--border);
             padding: 3rem 0;
             text-align: center;
             color: var(--text-muted);
             margin-top: 4rem;
-            animation: slideUp 0.8s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         footer a {
             color: var(--accent);
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        footer a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            transition: width 0.3s;
         }
 
         footer a:hover {
-            color: var(--accent-light);
-        }
-
-        footer a:hover::after {
-            width: 100%;
+            text-decoration: underline;
         }
 
         /* Responsive */
@@ -837,20 +498,26 @@
                 <div>
                     <div class="upload-box" onclick="document.getElementById('csvFile').click()">
                         <div class="upload-icon">📁</div>
-                        <p><strong>Click to upload CSV</strong></p>
-                        <p style="font-size: 0.85rem;">or drag and drop</p>
-                        <input type="file" id="csvFile" accept=".csv" onchange="handleFileUpload()">
+                        <p>Click to upload CSV file</p>
+                        <input type="file" id="csvFile" accept=".csv" />
+                        <small style="color: var(--text-muted);">or drag and drop</small>
                     </div>
-                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="loadSampleData()">Load Sample Data</button>
+                    <div id="statusMessage" class="status-message"></div>
+                    <div style="margin-top: 2rem;">
+                        <button class="btn btn-secondary" onclick="loadSampleData()" style="width: 100%;">
+                            📊 Load Sample Data
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Results Section -->
                 <div>
-                    <div id="statusMessage"></div>
                     <div class="results-box" id="resultsBox">
-                        <div style="text-align: center; color: var(--text-muted);">
-                            <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
-                            <p>Upload a CSV file to see results here</p>
+                        <div class="empty">
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                                <p>Upload a CSV file or load sample data to see results</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -912,6 +579,103 @@
         const csvFile = document.getElementById('csvFile');
         const resultsBox = document.getElementById('resultsBox');
         const statusMessage = document.getElementById('statusMessage');
+
+        // File upload handler
+        csvFile.addEventListener('change', handleFileUpload);
+
+        // Drag and drop
+        document.querySelector('.upload-box').addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.currentTarget.style.borderColor = 'var(--accent)';
+        });
+
+        document.querySelector('.upload-box').addEventListener('dragleave', (e) => {
+            e.currentTarget.style.borderColor = '';
+        });
+
+        document.querySelector('.upload-box').addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.currentTarget.style.borderColor = '';
+            csvFile.files = e.dataTransfer.files;
+            handleFileUpload();
+        });
+
+        async function handleFileUpload() {
+            const file = csvFile.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            showStatus('Processing...', 'info');
+            resultsBox.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 1rem;"><div class="loading"></div><span>Validating and analyzing your data...</span></div>';
+
+            try {
+                // Backend deployed on Render
+                const apiBaseUrl = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:3001' 
+                    : 'https://llm-assisted-data-pipeline-1.onrender.com';
+                    
+                const response = await fetch(apiBaseUrl + '/api/process', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    showStatus(error.error || 'Processing failed', 'error');
+                    resultsBox.innerHTML = '<div class="empty"><div style="text-align: center;"><div style="font-size: 2rem; color: var(--danger); margin-bottom: 1rem;">❌</div><p>Error processing file. Please check the file format.</p></div></div>';
+                    return;
+                }
+
+                const data = await response.json();
+                displayResults(data);
+                showStatus('File processed successfully!', 'success');
+            } catch (error) {
+                showStatus('Error: ' + error.message, 'error');
+                resultsBox.innerHTML = '<div class="empty"><div style="text-align: center;"><div style="font-size: 2rem; color: var(--danger); margin-bottom: 1rem;">❌</div><p>Connection error. Make sure the backend is running.</p></div></div>';
+            }
+        }
+
+        async function loadSampleData() {
+            // Create a simple sample CSV
+            const sampleCSV = `Name,Age,Salary,Department,JoinDate
+Alice Johnson,28,65000,Engineering,2022-01-15
+Bob Smith,34,75000,Sales,2021-06-20
+Carol Davis,29,68000,Engineering,2022-03-10
+David Wilson,41,85000,Management,2020-11-05
+Emma Brown,26,55000,Support,2023-01-20
+Frank Miller,38,72000,Sales,2021-08-12`;
+
+            const blob = new Blob([sampleCSV], { type: 'text/csv' });
+            csvFile.files = new DataTransfer().items.add(new File([blob], 'sample.csv')).files;
+            
+            const formData = new FormData();
+            formData.append('file', new File([blob], 'sample.csv'));
+
+            showStatus('Processing sample data...', 'info');
+            resultsBox.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 1rem;"><div class="loading"></div><span>Analyzing sample dataset...</span></div>';
+
+            try {
+                // Backend deployed on Render
+                const apiBaseUrl = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:3001' 
+                    : 'https://llm-assisted-data-pipeline-1.onrender.com';
+                    
+                const response = await fetch(apiBaseUrl + '/api/process', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error('Processing failed');
+
+                const data = await response.json();
+                displayResults(data);
+                showStatus('Sample data processed successfully!', 'success');
+            } catch (error) {
+                showStatus('Error: ' + error.message, 'error');
+            }
+        }
 
         function displayResults(data) {
             let html = '';
@@ -1067,83 +831,6 @@
 
             if (type === 'success') {
                 setTimeout(() => statusMessage.className = 'status-message', 5000);
-            }
-        }
-
-        async function handleFileUpload() {
-            const file = csvFile.files[0];
-            if (!file) return;
-
-            const formData = new FormData();
-            formData.append('file', file);
-
-            showStatus('Processing...', 'info');
-            resultsBox.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 1rem;"><div class="loading"></div><span>Validating and analyzing your data...</span></div>';
-
-            try {
-                // Backend deployed on Render
-                const apiBaseUrl = window.location.hostname === 'localhost' 
-                    ? 'http://localhost:3001' 
-                    : 'https://llm-assisted-data-pipeline-1.onrender.com';
-                    
-                const response = await fetch(apiBaseUrl + '/api/process', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) {
-                    const error = await response.json();
-                    showStatus(error.error || 'Processing failed', 'error');
-                    resultsBox.innerHTML = '<div class="empty"><div style="text-align: center;"><div style="font-size: 2rem; color: var(--danger); margin-bottom: 1rem;">❌</div><p>Error processing file. Please check the file format.</p></div></div>';
-                    return;
-                }
-
-                const data = await response.json();
-                displayResults(data);
-                showStatus('File processed successfully!', 'success');
-            } catch (error) {
-                showStatus('Error: ' + error.message, 'error');
-                resultsBox.innerHTML = '<div class="empty"><div style="text-align: center;"><div style="font-size: 2rem; color: var(--danger); margin-bottom: 1rem;">❌</div><p>Connection error. Make sure the backend is running.</p></div></div>';
-            }
-        }
-
-        async function loadSampleData() {
-            // Create a simple sample CSV
-            const sampleCSV = `Name,Age,Salary,Department,JoinDate
-Alice Johnson,28,65000,Engineering,2022-01-15
-Bob Smith,34,75000,Sales,2021-06-20
-Carol Davis,29,68000,Engineering,2022-03-10
-David Wilson,41,85000,Management,2020-11-05
-Emma Brown,26,55000,Support,2023-01-20
-Frank Miller,38,72000,Sales,2021-08-12`;
-
-            const blob = new Blob([sampleCSV], { type: 'text/csv' });
-            csvFile.files = new DataTransfer().items.add(new File([blob], 'sample.csv')).files;
-            
-            const formData = new FormData();
-            formData.append('file', new File([blob], 'sample.csv'));
-
-            showStatus('Processing sample data...', 'info');
-            resultsBox.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 1rem;"><div class="loading"></div><span>Analyzing sample dataset...</span></div>';
-
-            try {
-                // Backend deployed on Render
-                const apiBaseUrl = window.location.hostname === 'localhost' 
-                    ? 'http://localhost:3001' 
-                    : 'https://llm-assisted-data-pipeline-1.onrender.com';
-                    
-                const response = await fetch(apiBaseUrl + '/api/process', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) throw new Error('Processing failed');
-
-                const data = await response.json();
-                displayResults(data);
-                showStatus('Sample data processed successfully!', 'success');
-            } catch (error) {
-                showStatus('Error: ' + error.message, 'error');
             }
         }
 
