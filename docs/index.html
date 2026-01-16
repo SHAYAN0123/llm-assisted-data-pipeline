@@ -658,8 +658,6 @@
                 }
 
                 const data = await response.json();
-                console.log('Response from API:', data);
-                console.log('Agent field exists:', !!data.agent);
                 displayResults(data);
                 showStatus('File processed successfully!', 'success');
             } catch (error) {
@@ -709,8 +707,6 @@ Frank Miller,38,72000,Sales,2021-08-12`;
         }
 
         function displayResults(data) {
-            console.log('displayResults called with:', data);
-            console.log('data.agent:', data.agent);
             let html = '';
 
             // Validation Results
