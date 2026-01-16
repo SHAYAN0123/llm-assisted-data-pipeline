@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import pandas as pd
 import os
+from agent import analyze_csv_intelligently
 
 app = Flask(__name__, static_folder='docs', static_url_path='')
 CORS(app)
@@ -25,6 +26,9 @@ def process_csv():
         # Remove duplicates
         cleaned_df = df.drop_duplicates()
         
+        # Run intelligent agent analysis
+        agent_analysis = analyze_csv_intelligently(df)
+        
         # Build response
         schema = {col: {'type': str(df[col].dtype), 'nullable': bool(df[col].isna().any())} for col in df.columns}
         stats = {
@@ -39,14 +43,45 @@ def process_csv():
             'validation': {'is_valid': True, 'errors': []},
             'schema': schema,
             'statistics': stats,
-            'cleaned_data': cleaned_df.head(10).astype(str).to_dict('records')
+            'cleaned_data': cleaned_df.head(10).astype(str).to_dict('records'),
+            'agent': {
+                'quality_score': agent_analysis['quality_score'],
+                'data_profile': agent_analysis['data_profile'],
+                'issues': agent_analysis['issues_detected'],
+                'recommendations': agent_analysis['recommendations'],
+                'insights': agent_analysis['insights'],
+                'suggested_actions': agent_analysis['suggested_actions']
+            }
         }), 200
     except Exception as e:
         return jsonify({'error': f'Error: {str(e)}'}), 500
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    return jsonify({'status': 'ok', 'message': 'API running', 'version': '1.0.0'}), 200
+    return jsonify({'status': 'ok', 'message': 'API running', 'version': '2.0.0', 'features': ['intelligent-analysis', 'auto-recommendations', 'agentic-insights']}), 200
+
+@app.route('/api/analyze', methods=['POST'])
+def analyze_data():
+    """Endpoint for intelligent agentic analysis only"""
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file'}), 400
+        file = request.files['file']
+        if not file.filename:
+            return jsonify({'error': 'No filename'}), 400
+        df = pd.read_csv(file)
+        if df.empty:
+            return jsonify({'error': 'Empty CSV'}), 400
+        
+        # Run intelligent agent analysis
+        agent_analysis = analyze_csv_intelligently(df)
+        
+        return jsonify({
+            'status': 'analyzed',
+            'agent_output': agent_analysis
+        }), 200
+    except Exception as e:
+        return jsonify({'error': f'Error: {str(e)}'}), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 3000))

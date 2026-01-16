@@ -766,6 +766,60 @@ Frank Miller,38,72000,Sales,2021-08-12`;
                 html += '</tbody></table></div>';
             }
 
+            // Agent Analysis - Quality Score & Insights
+            if (data.agent) {
+                const agent = data.agent;
+                
+                html += '<h3 style="color: var(--accent); margin-bottom: 1rem; margin-top: 2rem;">🤖 Intelligent Analysis</h3>';
+                
+                // Quality Score with color coding
+                const score = agent.quality_score;
+                const scoreColor = score >= 80 ? '#10b981' : score >= 60 ? '#f59e0b' : '#ef4444';
+                html += `<div style="background: linear-gradient(135deg, ${scoreColor}20, ${scoreColor}40); border-left: 4px solid ${scoreColor}; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">`;
+                html += `<div style="display: flex; justify-content: space-between; align-items: center;">`;
+                html += `<div><div style="color: var(--text-muted); font-size: 0.9rem;">Data Quality Score</div><div style="font-size: 2rem; font-weight: bold; color: ${scoreColor};">${score.toFixed(1)}/100</div></div>`;
+                html += `</div></div>`;
+                
+                // Issues
+                if (agent.issues && agent.issues.length > 0) {
+                    html += '<div style="margin-bottom: 1rem;"><strong style="color: #ef4444;">⚠️ Issues Detected:</strong>';
+                    agent.issues.forEach(issue => {
+                        html += `<div style="margin-left: 1rem; margin-top: 0.5rem; color: var(--text-muted);">• ${issue}</div>`;
+                    });
+                    html += '</div>';
+                }
+                
+                // Recommendations
+                if (agent.recommendations && agent.recommendations.length > 0) {
+                    html += '<div style="margin-bottom: 1rem;"><strong style="color: var(--accent-light);">💡 Recommendations:</strong>';
+                    agent.recommendations.forEach(rec => {
+                        html += `<div style="margin-left: 1rem; margin-top: 0.5rem; background: var(--primary); padding: 0.75rem; border-radius: 6px;">`;
+                        html += `<div style="color: #8b5cf6; font-weight: 500;">${rec.message}</div>`;
+                        html += `<div style="color: var(--text-muted); font-size: 0.9rem;">→ ${rec.action}</div>`;
+                        html += `</div>`;
+                    });
+                    html += '</div>';
+                }
+                
+                // Insights
+                if (agent.insights && agent.insights.length > 0) {
+                    html += '<div style="margin-bottom: 1rem;"><strong style="color: #0ea5e9;">💎 Insights:</strong>';
+                    agent.insights.forEach(insight => {
+                        html += `<div style="margin-left: 1rem; margin-top: 0.5rem; color: var(--text-muted);">→ ${insight}</div>`;
+                    });
+                    html += '</div>';
+                }
+                
+                // Suggested Actions
+                if (agent.suggested_actions && agent.suggested_actions.length > 0) {
+                    html += '<div style="margin-bottom: 1rem;"><strong style="color: #10b981;">✓ Suggested Actions:</strong>';
+                    agent.suggested_actions.forEach(action => {
+                        html += `<div style="margin-left: 1rem; margin-top: 0.5rem; color: var(--text-muted);">1️⃣ ${action}</div>`;
+                    });
+                    html += '</div>';
+                }
+            }
+
             // Cleaned Data Preview
             if (data.cleaned_data && data.cleaned_data.length > 0) {
                 html += '<h3 style="color: var(--accent); margin-bottom: 1rem; margin-top: 2rem;">📈 Cleaned Data Preview</h3>';
