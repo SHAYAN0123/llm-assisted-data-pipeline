@@ -1,6 +1,6 @@
 # LLM-Assisted Data Pipeline
 
-A production-grade CSV data pipeline with comprehensive validation, cleaning, and statistical analysis capabilities. Built with Python, pandas, and pytest for robust data processing workflows.
+A production-grade CSV data pipeline with comprehensive validation, cleaning, statistical analysis, and **intelligent autonomous agent** capabilities. Built with Python, pandas, Flask, and modern deployment architecture for professional data processing workflows.
 
 ## 📋 Overview
 
@@ -9,15 +9,60 @@ This project provides a complete, modular data processing framework designed to:
 - **Clean** and normalize validated data with type coercion and formatting
 - **Analyze** processed data with comprehensive statistics
 - **Report** errors and insights with detailed error codes and messages
+- **Understand** data quality autonomously with intelligent agent analysis
+- **Recommend** optimized processing strategies and data fixes
 
 ### Key Features
 - ✅ **Schema Validation**: Validates transaction records (ID, amount, timestamp, country)
 - ✅ **Row-Level Validation**: Comprehensive error detection with 16+ error codes
 - ✅ **Data Cleaning**: Type coercion, whitespace trimming, rounding, timestamp normalization
 - ✅ **Statistical Analysis**: Numeric, string, and datetime statistics
+- ✅ **🤖 Intelligent Agent**: Autonomous analysis with quality scoring, issue detection, and recommendations
 - ✅ **Error Accumulation**: Collects all validation errors before rejecting rows
 - ✅ **Comprehensive Testing**: 34 unit tests covering all functionality
-- ✅ **Production Documentation**: ~100 pages of specs, architecture, and implementation guides
+- ✅ **Production Deployment**: Live on Render.com with GitHub Pages frontend
+- ✅ **Professional Documentation**: ~150 pages of specs, architecture, examples, and guides
+
+## 🤖 Intelligent Agent System
+
+**NEW:** Meet the Data Pipeline Agent - an autonomous system that analyzes your CSV data and provides intelligent insights.
+
+### Agent Capabilities
+- 📊 **Quality Scoring** (0-100): Automatic data quality assessment
+- 🔍 **Issue Detection**: Identifies outliers, duplicates, missing values, data type issues
+- 💡 **Smart Recommendations**: Suggests optimal data fixes and processing strategies
+- 💎 **Insights**: Detects patterns, skewness, cardinality issues, data characteristics
+- ✓ **Suggested Actions**: Provides prioritized next steps for data processing
+
+### Example Analysis
+```
+Quality Score: 90.0/100 ✅
+Issues Found: 2
+  • Column 'amount' contains 2 potential outliers
+  • Column 'customer_id' has skewed distribution
+
+Recommendations: 1
+  • Found 10% duplicate rows → Remove duplicates before analysis
+
+Suggested Actions:
+  1. Handle missing values
+  2. Remove duplicate records
+  3. Investigate and handle detected issues
+  4. Validate data against business rules
+  5. Export cleaned data for analysis
+```
+
+### Try the Agent
+1. Visit: https://SHAYAN0123.github.io/llm-assisted-data-pipeline/
+2. Upload a CSV file or use sample data
+3. See real-time quality analysis
+4. Review intelligent recommendations
+5. Follow suggested actions
+
+**Agent Documentation:**
+- 📖 [Agent System Overview](AGENT_DOCUMENTATION.md) - Complete technical reference
+- 💼 [Real-World Use Cases](AGENT_EXAMPLES.md) - E-commerce, HR, Finance examples
+- 📋 [Implementation Summary](AGENT_SYSTEM_SUMMARY.md) - Business value & deployment
 
 ## 🚀 Quick Start
 
