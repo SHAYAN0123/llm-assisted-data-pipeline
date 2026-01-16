@@ -459,7 +459,7 @@
     <!-- Hero -->
     <section class="hero">
         <h1>LLM-Assisted Data Pipeline</h1>
-        <p>Enterprise-grade CSV data validation, cleaning, and statistical analysis powered by intelligent schema validation and automated data processing.</p>
+        <p>Intelligent CSV data processing with autonomous analysis, automated recommendations, and comprehensive data quality insights powered by advanced schema validation.</p>
         <a href="#demo" class="btn">Try Live Demo</a>
     </section>
 
@@ -537,57 +537,29 @@
                         <span class="endpoint-method">POST</span>
                         <span class="endpoint-path">/api/process</span>
                     </div>
-                    <p>Process CSV file with validation, cleaning, and statistical analysis</p>
+                    <p>Process CSV file with intelligent validation, data cleaning, and comprehensive statistical analysis powered by autonomous agent recommendations.</p>
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
                         <strong>Request:</strong> multipart/form-data with 'file' field
                     </p>
                     <p style="color: var(--text-muted); font-size: 0.9rem;">
-                        <strong>Response:</strong> JSON with validation results, cleaned data, and statistics
+                        <strong>Response:</strong> JSON with validation results, schema, statistics, cleaned data, and intelligent agent analysis
                     </p>
-                </div>
-
-                <div class="api-endpoint">
-                    <div>
-                        <span class="endpoint-method">GET</span>
-                        <span class="endpoint-path">/api/stats</span>
-                    </div>
-                    <p>Get statistics from the last processed file</p>
-                </div>
-
-                <div class="api-endpoint">
-                    <div>
-                        <span class="endpoint-method">GET</span>
-                        <span class="endpoint-path">/api/schema</span>
-                    </div>
-                    <p>Get detected schema from the last processed file</p>
                 </div>
 
                 <div class="api-endpoint">
                     <div>
                         <span class="endpoint-method">POST</span>
-                        <span class="endpoint-path">/api/validate</span>
+                        <span class="endpoint-path">/api/analyze</span>
                     </div>
-                    <p>Validate CSV file against schema without cleaning</p>
+                    <p>Get intelligent analysis and recommendations for your CSV data.</p>
                 </div>
 
-                <h3 style="color: var(--accent-light); margin-bottom: 1rem; margin-top: 2rem;">Technical Stack</h3>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-                    <div style="padding: 1rem; background: var(--primary); border-radius: 8px;">
-                        <strong style="color: var(--accent);">Backend:</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Python Flask API with pandas, numpy processing</p>
+                <div class="api-endpoint">
+                    <div>
+                        <span class="endpoint-method">GET</span>
+                        <span class="endpoint-path">/api/health</span>
                     </div>
-                    <div style="padding: 1rem; background: var(--primary); border-radius: 8px;">
-                        <strong style="color: var(--accent);">Frontend:</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Modern HTML5/CSS3 with async/await API calls</p>
-                    </div>
-                    <div style="padding: 1rem; background: var(--primary); border-radius: 8px;">
-                        <strong style="color: var(--accent);">Processing:</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Schema validation, data cleaning, statistics</p>
-                    </div>
-                    <div style="padding: 1rem; background: var(--primary); border-radius: 8px;">
-                        <strong style="color: var(--accent);">Testing:</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">34 comprehensive unit tests with pytest</p>
-                    </div>
+                    <p>Check API status and version information.</p>
                 </div>
             </div>
         </div>
@@ -596,10 +568,9 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>Built with Python, Flask, and modern web technologies</p>
+            <p>LLM-Assisted Data Pipeline © 2026</p>
             <p style="margin-top: 1rem; font-size: 0.9rem;">
-                <a href="https://github.com/SHAYAN0123/llm-assisted-data-pipeline">View on GitHub</a> •
-                <a href="https://github.com/SHAYAN0123">More Projects</a>
+                <a href="https://github.com/SHAYAN0123/llm-assisted-data-pipeline">View on GitHub</a>
             </p>
         </div>
     </footer>
