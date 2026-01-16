@@ -642,7 +642,7 @@
             try {
                 // Backend deployed on Render
                 const apiBaseUrl = window.location.hostname === 'localhost' 
-                    ? 'http://localhost:3000' 
+                    ? 'http://localhost:3001' 
                     : 'https://llm-assisted-data-pipeline-1.onrender.com';
                     
                 const response = await fetch(apiBaseUrl + '/api/process', {
@@ -688,7 +688,7 @@ Frank Miller,38,72000,Sales,2021-08-12`;
             try {
                 // Backend deployed on Render
                 const apiBaseUrl = window.location.hostname === 'localhost' 
-                    ? 'http://localhost:3000' 
+                    ? 'http://localhost:3001' 
                     : 'https://llm-assisted-data-pipeline-1.onrender.com';
                     
                 const response = await fetch(apiBaseUrl + '/api/process', {
